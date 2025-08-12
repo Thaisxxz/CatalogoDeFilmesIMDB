@@ -18,7 +18,8 @@ public class Filme {
         this.descricao = descricao;
         this.atores = new ArrayList<>();
     }
-    public String getNome(){
+
+    public String getNome() {
         return nome;
     }
 
@@ -66,7 +67,7 @@ public class Filme {
         this.atores.add(ator);
     }
 
-    public void exibirInformacoes(){
+    public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
         System.out.println("Data de Lançamento: " + dataLancamento);
         System.out.println("Orçamento: " + orcamento);
