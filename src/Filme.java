@@ -8,8 +8,8 @@ public class Filme {
     private String dataLancamento;
     private BigDecimal orcamento;
     private String descricao;
-    private Diretores diretores;
-    private List<Atores> atores;
+    private Diretor diretor;
+    private List<Ator> atores;
 
     public Filme(String nome, String dataLancamento, BigDecimal orcamento, String descricao) {
         this.nome = nome;
@@ -51,31 +51,40 @@ public class Filme {
         this.descricao = descricao;
     }
 
-    public Diretores getDiretores() {
-        return diretores;
+    public Diretor getDiretor() {
+        return diretor;
     }
 
-    public void setDiretores(Diretores diretores) {
-        this.diretores = diretores;
+    public void setDiretor(Diretor diretor) {
+        this.diretor = diretor;
     }
 
-    public List<Atores> getAtores() {
+    public List<Ator> getAtores() {
         return atores;
     }
 
-    public void adicionarAtor(Atores ator) {
+    public void adicionarAtor(Ator ator) {
         this.atores.add(ator);
+    }
+
+    // Método para pesquisa ignorando maiúsculas/minúsculas
+    public boolean contemNome(String termo) {
+        return nome != null && nome.toLowerCase().contains(termo.toLowerCase());
     }
 
     public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
         System.out.println("Data de Lançamento: " + dataLancamento);
-        System.out.println("Orçamento: " + orcamento);
+        System.out.println("Orçamento: R$ " + orcamento);
         System.out.println("Descrição: " + descricao);
-        System.out.println("Diretores: " + (diretores != null ? diretores.getNome() : "Não definido"));
-        System.out.println("Atores: ");
-        for (Atores ator : atores) {
-            System.out.println("- " + ator.getNome());
+        System.out.println("Diretor: " + (diretor != null ? diretor.getNome() : "Não definido"));
+        System.out.println("Atores:");
+        if (atores.isEmpty()) {
+            System.out.println("Nenhum ator associado.");
+        } else {
+            for (Ator ator : atores) {
+                System.out.println("- " + ator.getNome());
+            }
         }
     }
 }
